@@ -208,50 +208,50 @@ def custom_message_size(m, n):
 JALANKAN PROGRAM
 '''
 
-n = 251
-p = 3
-q = 2048
+if __name__ == '__main__':
+    n = 251
+    p = 3
+    q = 2048
 
-start_time = time.time()
-keypriv = gen_keypriv(n, p, q)
-r = poly_r(n, p)
+    start_time = time.time()
+    keypriv = gen_keypriv(n, p, q)
+    r = poly_r(n, p)
 
-message = '''Lorem ipsum dolor sit amet,
-consectetur adipiscing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-dolore eu fugiat nulla pariatur.
-Excepteur sint occaecat cupidatat non proident,
-sunt in culpa qui officia deserunt mollit anim id est laborum.
-Saya disini adalah seorang mahasiswa di Universitas Gadjah Mada jurusan Matematika!
-'''
-m = custom_message_size(strToBinary(message), n)[0]
-m_add_size = custom_message_size(strToBinary(message), n)[1]
+    message = '''Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+    dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident,
+    sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Saya disini adalah seorang mahasiswa di Universitas Gadjah Mada jurusan Matematika!
+    '''
+    m = custom_message_size(strToBinary(message), n)[0]
+    m_add_size = custom_message_size(strToBinary(message), n)[1]
 
+    f, g = keypriv[0], keypriv[1]
+    tries = 5
+    while tries > 0 and transversalchecker(f, g, m, r, q) == False:
+        f, g = gen_keypriv(n, p, q)[0], gen_keypriv(n, p, q)[1]
+        tries -= 1
+        print(f"after {5-tries} the key is built")
 
-f, g = keypriv[0], keypriv[1]
-tries = 5
-while tries > 0 and transversalchecker(f, g, m, r, q) == False:
-    f, g = gen_keypriv(n, p, q)[0], gen_keypriv(n, p, q)[1]
-    tries -= 1
-    print(f"after {5-tries} the key is built")
+    keypub = gen_keypub(keypriv)
 
-keypub = gen_keypub(keypriv)
+    start_time_enkripsi = time.time()
+    e = enkripsi(keypub, m, r, q)
+    print(f"cipherteks: \n {mod(e,q)}")
+    print("--- waktu enkripsi : %s milidetik ---\n" %
+          ((time.time() - start_time_enkripsi)*1000))
 
-start_time_enkripsi = time.time()
-e = enkripsi(keypub, m, r, q)
-print(f"cipherteks: \n {mod(e,q)}")
-print("--- waktu enkripsi : %s milidetik ---\n" %
-      ((time.time() - start_time_enkripsi)*1000))
+    start_time_dekripsi = time.time()
+    d = dekripsi(e,  keypriv, m_add_size, n)
+    print(f"hasil dekripsi: {d}")
+    print("--- waktu dekripsi : %s milidetik ---" %
+          ((time.time() - start_time_dekripsi)*1000))
 
-start_time_dekripsi = time.time()
-d = dekripsi(e,  keypriv, m_add_size, n)
-print(f"hasil dekripsi: {d}")
-print("--- waktu dekripsi : %s milidetik ---" %
-      ((time.time() - start_time_dekripsi)*1000))
-
-print("\n--- waktu total (temasuk pembangunan kunci) : %s seconds ---" %
-      (time.time() - start_time))
+    print("\n--- waktu total (temasuk pembangunan kunci) : %s seconds ---" %
+          (time.time() - start_time))
