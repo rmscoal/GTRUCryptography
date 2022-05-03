@@ -3,7 +3,7 @@
 **Hello everyone**
 
 ### What is this project?
-> This project is a Python program for my undergraduate thesis. It is a program to run a NTRU-like cryptography system called GTRU (a Group-based NTRU-like cryptosystem). The intention of this program is to measure the speed of its encryption and decryption process. In addition, it also totals the time with building the key. There are or will be two versions. The first version is under the group Z^n. Meanwhile the second version will be under a poly-Z group. On the last step of this project, the speeds will be compared to RSA, a well-known cryptosystem that is currently being in many security feature as a public-key cryptosystem. The test message for testing the is provided in test_message.
+> This project is a Python program for my undergraduate thesis. It is a program to run a NTRU-like cryptography system called GTRU (a Group-based NTRU-like cryptosystem). The intention of this program is to measure the speed of its encryption and decryption process. In addition, it also totals the time with building the key. There are or will be two versions for each group being used. The first group is the group Z^n. Meanwhile the second group is a poly-Z group. On each group, there will be two versions. One will be using lower triangle matrix for its private key and the other one will be using a circulant matrix derived from an NTRU polynomial. **The folders VersionOne and VersionTwo belongs to the first group**. On the last step of this project, the speeds will be compared to RSA, a well-known cryptosystem that is currently being in many security feature as a public-key cryptosystem. The test message for testing the is provided in test_message.
 
 ### What do I use in this project?
 
