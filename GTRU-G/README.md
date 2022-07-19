@@ -10,8 +10,7 @@ encryption result:
 --- encryption time : 11.379241943359375 miliseconds ---
 
 decryption result:
-Saya disini adalah seorang mahasiswa di Universitas Gadjah Mada jurusan Matematika!
-Skripsi saya mengenai kriptografi!
+Lorem ipsum dolor sit amet, consectetur efficitur.
 --- decryption time : 10.071754455566406 milidetik ---
 
 --- performance time (key generation + encryption + decryption time) : 1.7997219562530518 seconds ---
