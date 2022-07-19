@@ -23,24 +23,27 @@ for modulo reduction of $q$. Furthermore, GTRU make uses of the functions
 \rho_{T_N} : G/N \rightarrow G, \rho_{T_N}(gN) = g_{T_N} \in gN \cap T_N,
 \bar{\pi}_N : E(G)_N \rightarrow E(G/N), \bar{\pi}_N(\mathfrak{f})(gN) = \mathfrak{f}(g)N.
 ``` 
-The complete algorithm can be seen as follows. <br/> 
-**Public Parameter:** Given a group $G$, normal subgroups $P$ and $Q$ in $G$, $T_P$ transversal of $P$ and $T_Q$ transversal of $Q$, the sets $\mathcal{L}_f, \mathcal{L}_g \subseteq E(G)$, and $\mathcal{L}_m, \mathcal{L}_r \subseteq G$. <br/> 
+The complete algorithm can be seen as follows.
+**Public Parameter:** Given a group $G$, normal subgroups $P$ and $Q$ in $G$, $T_P$ transversal of $P$ and $T_Q$ transversal of $Q$, the sets $\mathcal{L}_f, \mathcal{L}_g \subseteq E(G)$, and $\mathcal{L}_m, \mathcal{L}_r \subseteq G$.
 **Key Generation:** Choose $\mathfrak{f} \in \mathcal{L}_f$ and $\mathfrak{g} \in \mathcal{L}_g$ such that there exist $\mathfrak{f}_P$ and $\mathfrak{f}_Q$ that follows 
 $$\bar{\pi}_P(\mathfrak{f}_P \circ \mathfrak{f}) \circ \pi_P = \pi_P,$$ 
-$$\bar{\pi}_Q(\mathfrak{f} \circ \mathfrak{f}_Q) \circ \pi_Q = \pi_Q.$$ Calculate $\mathfrak{h} = \bar{\pi}_Q(\mathfrak{f}_Q \circ \mathfrak{g})$. The public key is $\mathfrak{h}$ and the private key is the pair $(\mathfrak{f}, \mathfrak{f}_P)$. <br/> 
+$$\bar{\pi}_Q(\mathfrak{f} \circ \mathfrak{f}_Q) \circ \pi_Q = \pi_Q.$$ 
+Calculate $\mathfrak{h} = \bar{\pi}_Q(\mathfrak{f}_Q \circ \mathfrak{g})$. The public key is $\mathfrak{h}$ and the private key is the pair $(\mathfrak{f}, \mathfrak{f}_P)$.
 **Encryption:** To encrypt a message $m \in \mathcal{L}_m$, randomly choose $r \in \mathcal{L}_r$ and calculate 
-$$c=\pi_Q(m) \star \mathfrak{h} \circ \pi_Q(r).$$ <br/> 
+$$c=\pi_Q(m) \cdot \mathfrak{h} \circ \pi_Q(r)$$
 **Decryption:** To decrypt the ciphertext $c \in G/Q$, calculate 
-$$m = \rho_{T_P} \circ \bar{\pi}_P(\mathfrak{f}_P) \circ \pi_P \circ \rho_{T_Q} \circ \bar{\pi}_Q(f)(c).$$ Now, not all groups can be used for GTRU cryptosystem. There are surely a number of requirements a group must have. One example is a group $G$ must at least have two non-trivial normal subgroups. With all this said, this program is a GTRU simulation program using the groups $\mathbb{Z}^n$ under vector addition and a special poly-$\mathbb{Z}$ group 
-$$G_n = \mathbb{Z}^{n-1} \rtimes_\phi \mathbb{Z}$$ where $\phi: \mathbb{Z} \rightarrow Aut(\mathbb{Z}^{n-1})$ defined by 
-```math 
-\ph(a) = \begin{Bmatrix}
+$$m = \rho_{T_P} \circ \bar{\pi}_P(\mathfrak{f}_P) \circ \pi_P \circ \rho_{T_Q} \circ \bar{\pi}_Q(f)(c).$$ 
+Now, not all groups can be used for GTRU cryptosystem. There are surely a number of requirements a group must have. One example is a group $G$ must at least have two non-trivial normal subgroups. With all this said, this program is a GTRU simulation program using the groups $\mathbb{Z}^n$ under vector addition and a special poly-$\mathbb{Z}$ group 
+$$G_n = \mathbb{Z}^{n-1} \rtimes_\phi \mathbb{Z}$$ 
+where $\phi: \mathbb{Z} \rightarrow Aut(\mathbb{Z}^{n-1})$ defined by 
+$$
+\phi (a) = \begin{pmatrix}
 1 & 0 &\dots& 0 \\
 0 & 1 & \dots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 a & 0 & \dots & 1 
-\end{Bmatrix}, a \in \mathbb{Z}.
-```
+\end{pmatrix}, a \in \mathbb{Z}.
+$$
 
 ## Repository Explanation
 The folder ***GTRU-G*** contains the program for GTRU using the group $\mathbb{Z}^n$. Meanwhile, the folder ***GTRU-Gn*** contains the program for GTRU using the poly-$\mathbb{Z}$ group $G_n$ as mentioned. In each folder, you will see a brief explanationn about what the codes are doing.
