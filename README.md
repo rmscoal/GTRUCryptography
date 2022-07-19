@@ -35,19 +35,17 @@ Calculate $\mathfrak{h} = \bar{\pi}_Q(\mathfrak{f}_Q \circ \mathfrak{g})$. The p
 $$c=\pi_Q(m) \cdot \mathfrak{h} \circ \pi_Q(r)$$
 
 **Decryption:** To decrypt the ciphertext $c \in G/Q$, calculate 
-$$m = \rho_{T_P} \circ \bar{\pi}_P(\mathfrak{f}_P) \circ \pi_P \circ \rho_{T_Q} \circ \bar{\pi}_Q(f)(c).$$ 
+$$m = \rho_{T_P} \circ \bar{\pi}_P(\mathfrak{f}_P) \circ \pi_P \circ \rho_{T_Q} \circ \bar{\pi}_Q(f)(c)$$ 
 
 Now, not all groups can be used for GTRU cryptosystem. There are surely a number of requirements a group must have. One example is a group $G$ must at least have two non-trivial normal subgroups. With all this said, this program is a GTRU simulation program using the groups $\mathbb{Z}^n$ under vector addition and a special poly-$\mathbb{Z}$ group 
 $$G_n = \mathbb{Z}^{n-1} \rtimes_\phi \mathbb{Z}$$ 
 where $\phi: \mathbb{Z} \rightarrow Aut(\mathbb{Z}^{n-1})$ defined by 
-$$
-\phi (a) = \begin{pmatrix}
+$$\phi (a) = \begin{pmatrix}
 1 & 0 &\dots& 0 \\
 0 & 1 & \dots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 a & 0 & \dots & 1 
-\end{pmatrix}, a \in \mathbb{Z}.
-$$
+\end{pmatrix}, a \in \mathbb{Z}$$
 
 ## Repository Explanation
 The folder ***GTRU-G*** contains the program for GTRU using the group $\mathbb{Z}^n$. Meanwhile, the folder ***GTRU-Gn*** contains the program for GTRU using the poly-$\mathbb{Z}$ group $G_n$ as mentioned. In each folder, you will see a brief explanationn about what the codes are doing.
