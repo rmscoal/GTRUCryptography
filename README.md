@@ -19,8 +19,8 @@ as the replacement for modulo reduction of $p$ and
 $$\pi_Q : G \rightarrow G/Q$$ 
 for modulo reduction of $q$. Furthermore, GTRU make uses of the functions 
 $$\pi_N : G \rightarrow G/N, \pi_N(g) = gN$$
-$$\rho_{T_N} : G/N \rightarrow G, \rho_{T_N}(gN) = g_{T_N} \in gN \cap T_N,$$
-$$\bar{\pi}_N : E(G)_N \rightarrow E(G/N), \bar{\pi}_N(\mathfrak{f})(gN) = \mathfrak{f}(g)N.$$
+$$\rho_{T_N} : G/N \rightarrow G, \rho_{T_N}(gN) = g_{T_N} \in gN \cap T_N$$
+$$\bar{\pi}_N : E(G)_N \rightarrow E(G/N), \bar{\pi}_N(\mathfrak{f})(gN) = \mathfrak{f}(g)N$$
 
 The complete algorithm can be seen as follows.
 
@@ -49,3 +49,11 @@ a & 0 & \dots & 1
 
 ## Repository Explanation
 The folder ***GTRU-G*** contains the program for GTRU using the group $\mathbb{Z}^n$. Meanwhile, the folder ***GTRU-Gn*** contains the program for GTRU using the poly-$\mathbb{Z}$ group $G_n$ as mentioned. In each folder, you will see a brief explanationn about what the codes are doing.
+
+## Performance of GTRU
+GTRU's performance is not faster than RSA. Here are the performances comparison of GTRU-G, GTRU-Gn, and RSA using the plaintext "Lorem ipsum dolor sit amet, consectetur efficitur."
+| | (251,3,2521) GTRU-Gn | (467, 3, 3739) GTRU-G | 4096-bit RSA |
+| ------------- | ------------- | ------------- | ------------- |
+| encryption | 5.074 ms | 4.273 ms | 2.558 ms |
+| decryption | 4.833 ms | 4.343 ms | 9.880 ms |
+| total | 3.179 s | 6.138 s | 4.258 s |
