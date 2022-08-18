@@ -1,7 +1,6 @@
 import time
 import math
 import random
-import psutil
 from sympy import GF, invert
 import logging
 import numpy as np

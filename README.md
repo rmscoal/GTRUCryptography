@@ -1,10 +1,14 @@
 # GTRUCryptography
+### Technology in use:
+- [SymPy](https://www.sympy.org/en/index.html)
+- [psutil](https://pypi.org/project/psutil/)
+- [NumPy](https://numpy.org/)
 
 ## What is this project
-This project is a work that I'm doing on my **undergraduate thesis**. The title of my undergraduate thesis "*GTRU Public-key Cryptosystem and its Application using* $\mathbb{Z}^n$ *and* *Poly-*$\mathbb{Z}$ *Group*". The purpose of this project is to provide the Python implementation of the discussed cryptosystem. This program is to simulate key building, encryption and decryption process of the cryptosystem. In the thesis, I strictly discussed about the performance GTRU has and later on be compared with RSA public-key cryptosystem. Moreover, I also discussed on how efficient is this cryptosystem implementation.
+This project is a work that I'm doing for my **undergraduate thesis**. The title of my undergraduate thesis is "*GTRU Public-key Cryptosystem and its Application using* $\mathbb{Z}^n$ *and* *Poly-*$\mathbb{Z}$ *Group*". The purpose of this project is to provide the Python implementation of the discussed cryptosystem. This program is to simulate key building, encryption and decryption process of the cryptosystem. In the thesis, I strictly discussed about the performance GTRU has and later on be compared with RSA public-key cryptosystem. Moreover, I also discussed on how efficient is this cryptosystem implementation.
 
 ## What is Cryptography
-To put it short, cryptography is a field in mathematics that study on how to secure sending message over the noisy and dirtyh internet. Cryptography is based on mathematical problems such as the difficulty on factorizing large numbers, shortest vector problem, and many more. Cryptosystem is an algorithm made from simple cryptography. A cryptosystem can be said as the by product of cryptography. In the real world,  a cryptosystem should be able to  prioritize its security and it is hard to break, private keys is hard to find or plaintext is hardly recover from ciphertext. On top of that, a cryptosystem should also be able to deliver a great performance, as in speed, and is efficient. If so, then that cryptosystem is ideal.
+To put it short, cryptography is a field in mathematics that study on how to secure sending message over the noisy and dirty internet. Cryptography is based on mathematical problems such as the difficulty on factorizing large numbers, shortest vector problem, and many more. Cryptosystem is an algorithm made from simple cryptography. A cryptosystem can be said as the by product of cryptography. In the real world, a cryptosystem should be able to prioritize its security and it is hard to break, private keys is hard to find or plaintext is hardly recover from ciphertext. On top of that, a cryptosystem should also be able to deliver a great performance, as in speed, and is efficient. If so, then that cryptosystem is ideal.
 
 ## What is GTRU Public-Key Cryptosystem
 Before going further, let me explain about NTRU public-key cryptosystem. 
@@ -48,10 +52,43 @@ a & 0 & \dots & 1
 \end{pmatrix}, a \in \mathbb{Z}$$
 
 ## Repository Explanation
-The folder ***GTRU-G*** contains the program for GTRU using the group $\mathbb{Z}^n$. Meanwhile, the folder ***GTRU-Gn*** contains the program for GTRU using the poly-$\mathbb{Z}$ group $G_n$ as mentioned. In each folder, you will see a brief explanationn about what the codes are doing.
+The folder ***GTRU-G*** contains the application of GTRU on the group $\mathbb{Z}^n$. Meanwhile, the folder ***GTRU-Gn*** contains the application for GTRU on the poly-$\mathbb{Z}$ group $G_n$ as mentioned. In each folder, you will see a brief explanation about what the codes are doing.
+
+If you are interested, you may freely clone this project.
+```bash
+git clone https://github.com/rmscoal/GTRUCryptography.git && cd GTRUCryptography
+```
+
+If you want to run GTRU using the group $\mathbb{Z}^n$, run the following:
+```bash
+cd GTRU-G
+```
+
+Firstly, change the plaintext message according to your preference. To do this head to the file **test_message.txt** either run the followings and change to any message you prefer.
+```bash
+nano test_message.txt
+```
+or
+```bash
+vim test_message.txt
+```
+
+Next, to change the parameters, you must change it directly in the code. To do this either:
+```bash
+nano GTRUGMain.py
+```
+or
+```bash
+vim GTRUGMain.py
+```
+
+To meassure the performance and efficieny of GTRU, run the following, take note that to change the parameters you must go into the source code like before.
+```bash
+python GTRUGMainAverage.py
+```
 
 ## Performance of GTRU
-GTRU's performance is not faster than RSA. Here are the performances comparison of GTRU-G, GTRU-Gn, and RSA using the plaintext "Lorem ipsum dolor sit amet, consectetur efficitur."
+GTRU's performance is not better than RSA. Here are the performances comparison of GTRU-G, GTRU-Gn, and RSA using the plaintext "Lorem ipsum dolor sit amet, consectetur efficitur."
 | | (251,3,2521) GTRU-Gn | (467, 3, 3739) GTRU-G | 4096-bit RSA |
 | ------------- | ------------- | ------------- | ------------- |
 | encryption | 5.074 ms | 4.273 ms | 2.558 ms |
