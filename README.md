@@ -1,5 +1,5 @@
 # GTRUCryptography
-### Technology in use:
+### Packages in use:
 - [SymPy](https://www.sympy.org/en/index.html)
 - [psutil](https://pypi.org/project/psutil/)
 - [NumPy](https://numpy.org/)
